@@ -53,7 +53,7 @@ async def start_command(client: Client, message: Message):
                 caption = CUSTOM_CAPTION.format(previouscaption = "" if not msg.caption else msg.caption.html, filename = msg.document.file_name)
             else:
                 caption = "" if not msg.caption else msg.caption.html
-                reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = "https://t.me/mhd_thanzeer")]])
+                
             if DISABLE_CHANNEL_BUTTON:
                 reply_markup = msg.reply_markup
             else:
