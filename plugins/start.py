@@ -49,9 +49,10 @@ async def start_command(client: Client, message: Message):
         await temp_msg.delete()
 
         for msg in messages:
+                      reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = "https://t.me/mhd_thanzeer")]])
 
             if bool(CUSTOM_CAPTION) & bool(msg.document):
-                caption = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = "https://t.me/mhd_thanzeer")]])
+                caption = CUSTOM_CAPTION.format(previouscaption = "" if not msg.caption else msg.caption.html, filename = msg.document.file_name)
             else:
                 caption = "" if not msg.caption else msg.caption.html
 
