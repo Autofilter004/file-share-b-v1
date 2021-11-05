@@ -1,4 +1,3 @@
-#(©)Codexbotz
 
 import asyncio
 from pyrogram import Client, filters, __version__
@@ -49,11 +48,12 @@ async def start_command(client: Client, message: Message):
         await temp_msg.delete()
 
         for msg in messages:
+
             if bool(CUSTOM_CAPTION) & bool(msg.document):
                 caption = CUSTOM_CAPTION.format(previouscaption = "" if not msg.caption else msg.caption.html, filename = msg.document.file_name)
             else:
                 caption = "" if not msg.caption else msg.caption.html
-                
+
             if DISABLE_CHANNEL_BUTTON:
                 reply_markup = msg.reply_markup
             else:
@@ -72,23 +72,22 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    InlineKeyboardButton("🤪Aʙᴏᴜᴛ Mᴇ", callback_data = "about"),
+                    InlineKeyboardButton("😵Cʟᴏsᴇ", callback_data = "close")
                 ]
             ]
         )
         await message.reply_photo(
-            "https://telegra.ph/file/f762cedd4f9d6a4e61612.jpg",
+            "https://telegra.ph/file/55bc3dc62243e390f63de.jpg",
              caption=START_MSG.format(message.from_user.first_name),
              reply_markup=reply_markup,
              quote=True
          )
-        
         return
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    text = "<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
+    text = "<b> 🔊 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 🤭.\nDo you want Files? If u want Files, Join our main Channel.❤️ \nThen go to the Group and click File button, You Will get ..!😁 \n\n⚠️YOU ARE NOT SUBSCRIBED OUR CHANNEL⚠️ \n\nJoin on our channel to get Files ✅ \n\t\t\t⬇️Channel link⬇️</b>"
     message_text = message.text
     try:
         command, argument = message_text.split()
